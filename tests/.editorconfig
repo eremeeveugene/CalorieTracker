@@ -1,0 +1,5 @@
+# Test-only overrides; merged with the root .editorconfig
+
+[*.cs]
+# Allow Method_Scenario_Expected test names
+dotnet_diagnostic.CA1707.severity = none

@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    # Packages released together are updated in one PR
+    groups:
+      avalonia:
+        patterns: ["Avalonia*"]
+      opentelemetry:
+        patterns: ["OpenTelemetry*"]
+      tests:
+        patterns: ["xunit*", "Microsoft.NET.Test.Sdk", "coverlet.*"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
