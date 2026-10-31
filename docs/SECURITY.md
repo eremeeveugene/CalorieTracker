@@ -26,8 +26,8 @@ Please do not open a public issue. Report it privately through
 ### Application (Phase 1 onwards)
 
 - [ ] Authentication required by default (fallback authorization policy); public endpoints opt out explicitly
-- [ ] Passwords hashed by ASP.NET Core Identity; account lockout after failed logins
-- [ ] Short-lived JWT access tokens with rotating refresh tokens
+- [x] Passwords hashed by ASP.NET Core Identity; account lockout after failed logins
+- [x] Short-lived JWT access tokens with rotating refresh tokens; reuse of a rotated token revokes all sessions
 - [ ] Rate limiting in the gateway: per IP and per user, stricter on login and AI endpoints
 - [ ] Daily AI request quota per user
 - [ ] Input validation on every command; request body size limits

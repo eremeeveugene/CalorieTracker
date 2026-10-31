@@ -14,6 +14,7 @@ A cross-platform calorie tracker with AI-assisted food logging.
 Requirements: .NET SDK 10.0.403+ (see `global.json`) and Docker Desktop.
 
 ```bash
+dotnet tool restore
 dotnet build CalorieTracker.slnx
 dotnet test CalorieTracker.CI.slnf
 dotnet run --project src/AppHost

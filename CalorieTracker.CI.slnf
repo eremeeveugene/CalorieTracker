@@ -9,7 +9,13 @@
       "src/Contracts/CalorieTracker.Contracts.csproj",
       "src/Gateway/CalorieTracker.Gateway.csproj",
       "src/ServiceDefaults/CalorieTracker.ServiceDefaults.csproj",
-      "tests/ArchitectureTests/CalorieTracker.ArchitectureTests.csproj"
+      "src/Services/Identity/CalorieTracker.Identity.Api/CalorieTracker.Identity.Api.csproj",
+      "src/Services/Identity/CalorieTracker.Identity.Application/CalorieTracker.Identity.Application.csproj",
+      "src/Services/Identity/CalorieTracker.Identity.Domain/CalorieTracker.Identity.Domain.csproj",
+      "src/Services/Identity/CalorieTracker.Identity.Infrastructure/CalorieTracker.Identity.Infrastructure.csproj",
+      "tests/ArchitectureTests/CalorieTracker.ArchitectureTests.csproj",
+      "tests/Services/Identity/CalorieTracker.Identity.IntegrationTests/CalorieTracker.Identity.IntegrationTests.csproj",
+      "tests/Services/Identity/CalorieTracker.Identity.UnitTests/CalorieTracker.Identity.UnitTests.csproj"
     ]
   }
 }

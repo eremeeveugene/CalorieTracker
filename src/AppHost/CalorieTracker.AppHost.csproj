@@ -9,4 +9,12 @@
     <UserSecretsId>76f609db-9571-430b-9639-73fafe9b0416</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Services\Identity\CalorieTracker.Identity.Api\CalorieTracker.Identity.Api.csproj" />
+  </ItemGroup>
+
 </Project>
