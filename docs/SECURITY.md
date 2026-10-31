@@ -15,12 +15,12 @@ Please do not open a public issue. Report it privately through
 
 ### Repository (Phase 0)
 
-- [ ] Secret scanning with push protection
-- [ ] Dependabot alerts and security updates
-- [ ] Dependabot version updates (`.github/dependabot.yml`)
-- [ ] CodeQL code scanning
-- [ ] Private vulnerability reporting
-- [ ] `main` protected: changes by PR only, CI must pass
+- [x] Secret scanning with push protection
+- [x] Dependabot alerts and security updates
+- [x] Dependabot version updates (`.github/dependabot.yml`)
+- [x] CodeQL code scanning
+- [x] Private vulnerability reporting
+- [x] `main` protected: changes by PR only, CI must pass
 - [x] CI uses read-only permissions and `pull_request` (never `pull_request_target`)
 
 ### Application (Phase 1 onwards)
