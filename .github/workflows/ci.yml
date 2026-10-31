@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+# A newer push to the same branch/PR cancels the run still in progress
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # MinVer reads git tags and history to calculate the version
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      # The filter skips the Android, iOS and Browser heads; they need extra workloads
+      - name: Restore
+        run: dotnet restore CalorieTracker.CI.slnf
+
+      - name: Build
+        run: dotnet build CalorieTracker.CI.slnf --configuration Release --no-restore
+
+      - name: Test
+        run: >-
+          dotnet test CalorieTracker.CI.slnf
+          --configuration Release --no-build
+          --logger trx --results-directory TestResults
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults

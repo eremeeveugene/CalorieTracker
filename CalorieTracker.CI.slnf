@@ -1,0 +1,15 @@
+{
+  "solution": {
+    "path": "CalorieTracker.slnx",
+    "projects": [
+      "src/AppHost/CalorieTracker.AppHost.csproj",
+      "src/BuildingBlocks/CalorieTracker.BuildingBlocks.csproj",
+      "src/Client/CalorieTracker.Client/CalorieTracker.Client.csproj",
+      "src/Client/CalorieTracker.Client.Desktop/CalorieTracker.Client.Desktop.csproj",
+      "src/Contracts/CalorieTracker.Contracts.csproj",
+      "src/Gateway/CalorieTracker.Gateway.csproj",
+      "src/ServiceDefaults/CalorieTracker.ServiceDefaults.csproj",
+      "tests/ArchitectureTests/CalorieTracker.ArchitectureTests.csproj"
+    ]
+  }
+}

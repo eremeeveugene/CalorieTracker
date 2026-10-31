@@ -1,0 +1,29 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/AppHost/">
+    <Project Path="src/AppHost/CalorieTracker.AppHost.csproj" />
+  </Folder>
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/CalorieTracker.BuildingBlocks.csproj" />
+  </Folder>
+  <Folder Name="/src/Client/">
+    <Project Path="src/Client/CalorieTracker.Client.Android/CalorieTracker.Client.Android.csproj" />
+    <Project Path="src/Client/CalorieTracker.Client.Browser/CalorieTracker.Client.Browser.csproj" />
+    <Project Path="src/Client/CalorieTracker.Client.Desktop/CalorieTracker.Client.Desktop.csproj" />
+    <Project Path="src/Client/CalorieTracker.Client.iOS/CalorieTracker.Client.iOS.csproj" />
+    <Project Path="src/Client/CalorieTracker.Client/CalorieTracker.Client.csproj" />
+  </Folder>
+  <Folder Name="/src/Contracts/">
+    <Project Path="src/Contracts/CalorieTracker.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Gateway/">
+    <Project Path="src/Gateway/CalorieTracker.Gateway.csproj" />
+  </Folder>
+  <Folder Name="/src/ServiceDefaults/">
+    <Project Path="src/ServiceDefaults/CalorieTracker.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/ArchitectureTests/">
+    <Project Path="tests/ArchitectureTests/CalorieTracker.ArchitectureTests.csproj" />
+  </Folder>
+</Solution>
