@@ -24,9 +24,12 @@ public sealed class SigningKeyProvider : IDisposable
         key.KeyId = Base64UrlEncoder.Encode(key.ComputeJwkThumbprint());
 
         SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.RsaSha256);
+        PublicKeySet = CreatePublicKeySet(_rsa, key.KeyId);
     }
 
     public SigningCredentials SigningCredentials { get; }
+
+    public PublicJsonWebKeySet PublicKeySet { get; }
 
     public void Dispose() => _rsa.Dispose();
 
@@ -47,5 +50,21 @@ public sealed class SigningKeyProvider : IDisposable
 
         throw new InvalidOperationException(
             $"{JwtOptions.SectionName}:{nameof(JwtOptions.SigningKey)} must be configured outside Development.");
+    }
+
+    private static PublicJsonWebKeySet CreatePublicKeySet(RSA rsa, string keyId)
+    {
+        var publicParameters = rsa.ExportParameters(includePrivateParameters: false);
+
+        return new PublicJsonWebKeySet(
+        [
+            new PublicJsonWebKey(
+                KeyType: "RSA",
+                Use: "sig",
+                Algorithm: SecurityAlgorithms.RsaSha256,
+                KeyId: keyId,
+                Modulus: Base64UrlEncoder.Encode(publicParameters.Modulus!),
+                Exponent: Base64UrlEncoder.Encode(publicParameters.Exponent!)),
+        ]);
     }
 }
