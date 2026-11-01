@@ -1,0 +1,14 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CalorieTracker.Client.ViewModels"
+             x:Class="CalorieTracker.Client.Views.HomeView"
+             x:DataType="vm:HomeViewModel">
+    <StackPanel MaxWidth="360" Margin="24" Spacing="12" VerticalAlignment="Center">
+        <TextBlock Text="You're signed in" FontSize="28" FontWeight="SemiBold" HorizontalAlignment="Center" />
+        <TextBlock Text="{Binding Email}" Opacity="0.7" HorizontalAlignment="Center" />
+        <TextBlock Text="Your food diary arrives in Phase 2."
+                   Opacity="0.7" HorizontalAlignment="Center" Margin="0,12" />
+
+        <Button Content="Sign out" Command="{Binding SignOutCommand}" HorizontalAlignment="Center" />
+    </StackPanel>
+</UserControl>

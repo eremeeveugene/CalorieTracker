@@ -1,5 +1,3 @@
-
-using Avalonia;
 using Avalonia.Controls;
 
 namespace CalorieTracker.Client.Views;

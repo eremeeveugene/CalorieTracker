@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CalorieTracker.Client.ViewModels"
+             x:Class="CalorieTracker.Client.Views.RegisterView"
+             x:DataType="vm:RegisterViewModel">
+    <StackPanel MaxWidth="360" Margin="24" Spacing="12" VerticalAlignment="Center">
+        <TextBlock Text="Create your account" FontSize="28" FontWeight="SemiBold" HorizontalAlignment="Center" />
+        <TextBlock Text="Start tracking in under a minute" Opacity="0.7" HorizontalAlignment="Center" Margin="0,0,0,12" />
+
+        <TextBox PlaceholderText="Email" Text="{Binding Email}" />
+        <TextBox PlaceholderText="Password" PasswordChar="•" Text="{Binding Password}" />
+        <TextBox PlaceholderText="Confirm password" PasswordChar="•" Text="{Binding ConfirmPassword}" />
+
+        <TextBlock Text="{Binding PasswordHint}"
+                   IsVisible="{Binding PasswordHint, Converter={x:Static ObjectConverters.IsNotNull}}"
+                   Opacity="0.7" TextWrapping="Wrap" />
+        <TextBlock Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding ErrorMessage, Converter={x:Static ObjectConverters.IsNotNull}}"
+                   Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                   TextWrapping="Wrap" />
+
+        <Button Classes="accent" Content="Create account" IsDefault="True"
+                Command="{Binding RegisterCommand}"
+                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+        <ProgressBar IsIndeterminate="True" IsVisible="{Binding RegisterCommand.IsRunning}" />
+
+        <Button Content="I already have an account" Command="{Binding GoToLoginCommand}"
+                Background="Transparent" HorizontalAlignment="Center" />
+    </StackPanel>
+</UserControl>
