@@ -1,5 +1,6 @@
-using CalorieTracker.BuildingBlocks.Messaging;
+﻿using CalorieTracker.BuildingBlocks.Messaging;
 using CalorieTracker.BuildingBlocks.Results;
+using CalorieTracker.BuildingBlocks.Web;
 using CalorieTracker.Contracts.Identity;
 using CalorieTracker.Identity.Application.Login;
 using CalorieTracker.Identity.Application.Refresh;
