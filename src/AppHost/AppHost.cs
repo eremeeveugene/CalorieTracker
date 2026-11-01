@@ -12,9 +12,15 @@ var identity = builder.AddProject<Projects.CalorieTracker_Identity_Api>("identit
     .WaitFor(identityDb);
 
 // The only entry point clients can reach; services stay on the internal network
-builder.AddProject<Projects.CalorieTracker_Gateway>("gateway")
+var gateway = builder.AddProject<Projects.CalorieTracker_Gateway>("gateway")
     .WithReference(identity)
     .WaitFor(identity)
     .WithExternalHttpEndpoints();
+
+// Development convenience: opens the desktop client already pointed at the gateway
+builder.AddProject<Projects.CalorieTracker_Client_Desktop>("client-desktop")
+    .WithReference(gateway)
+    .WaitFor(gateway)
+    .ExcludeFromManifest();
 
 await builder.Build().RunAsync();

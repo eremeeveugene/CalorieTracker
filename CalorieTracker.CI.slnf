@@ -14,6 +14,7 @@
       "src/Services/Identity/CalorieTracker.Identity.Domain/CalorieTracker.Identity.Domain.csproj",
       "src/Services/Identity/CalorieTracker.Identity.Infrastructure/CalorieTracker.Identity.Infrastructure.csproj",
       "tests/ArchitectureTests/CalorieTracker.ArchitectureTests.csproj",
+      "tests/Client/CalorieTracker.Client.UnitTests/CalorieTracker.Client.UnitTests.csproj",
       "tests/Gateway/CalorieTracker.Gateway.IntegrationTests/CalorieTracker.Gateway.IntegrationTests.csproj",
       "tests/Services/Identity/CalorieTracker.Identity.IntegrationTests/CalorieTracker.Identity.IntegrationTests.csproj",
       "tests/Services/Identity/CalorieTracker.Identity.UnitTests/CalorieTracker.Identity.UnitTests.csproj"

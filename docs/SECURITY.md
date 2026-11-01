@@ -29,6 +29,9 @@ Please do not open a public issue. Report it privately through
 - [x] Services validate tokens themselves too, against Identity's published public keys (defense in depth)
 - [x] Passwords hashed by ASP.NET Core Identity; account lockout after failed logins
 - [x] Short-lived JWT access tokens with rotating refresh tokens; reuse of a rotated token revokes all sessions
+- [x] Desktop client keeps the refresh token encrypted with Windows DPAPI; the browser client keeps it in memory only
+- [ ] Sign-out revokes the refresh token on the server, not only on the device
+- [ ] Secure token storage on Android (Keystore), iOS (Keychain), macOS and Linux
 - [x] Rate limiting in the gateway: per IP and per user, stricter on login, registration and refresh
 - [ ] Stricter rate limits on AI endpoints
 - [ ] Client IP taken from forwarded headers once behind Cloudflare, so rate limits partition per real client

@@ -33,6 +33,9 @@
   <Folder Name="/tests/ArchitectureTests/">
     <Project Path="tests/ArchitectureTests/CalorieTracker.ArchitectureTests.csproj" />
   </Folder>
+  <Folder Name="/tests/Client/">
+    <Project Path="tests/Client/CalorieTracker.Client.UnitTests/CalorieTracker.Client.UnitTests.csproj" />
+  </Folder>
   <Folder Name="/tests/Gateway/">
     <Project Path="tests/Gateway/CalorieTracker.Gateway.IntegrationTests/CalorieTracker.Gateway.IntegrationTests.csproj" />
   </Folder>
