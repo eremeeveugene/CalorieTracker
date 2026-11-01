@@ -116,6 +116,22 @@ public sealed class AuthEndpointsTests(IdentityApiFactory factory) : IClassFixtu
         await ShouldBeProblemAsync(afterReuse, HttpStatusCode.Unauthorized, "Identity.InvalidRefreshToken");
     }
 
+    // Missing JSON fields arrive as null; they must never reach ASP.NET Core Identity
+    [Theory]
+    [InlineData("/v1/auth/register", "{}", HttpStatusCode.BadRequest, "Identity.MissingCredentials")]
+    [InlineData("/v1/auth/register", """{"email":"user@example.com"}""", HttpStatusCode.BadRequest, "Identity.MissingCredentials")]
+    [InlineData("/v1/auth/login", "{}", HttpStatusCode.BadRequest, "Identity.MissingCredentials")]
+    [InlineData("/v1/auth/login", """{"email":" ","password":"x"}""", HttpStatusCode.BadRequest, "Identity.MissingCredentials")]
+    [InlineData("/v1/auth/refresh", "{}", HttpStatusCode.Unauthorized, "Identity.InvalidRefreshToken")]
+    public async Task EmptyFields_AreRejectedWithAReadableError(string path, string json, HttpStatusCode statusCode, string code)
+    {
+        using var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+        using var response = await _client.PostAsync(path, content);
+
+        await ShouldBeProblemAsync(response, statusCode, code);
+    }
+
     private static string NewEmail() => $"{Guid.NewGuid():N}@example.com";
 
     private static async Task ShouldBeProblemAsync(HttpResponseMessage response, HttpStatusCode statusCode, string code)
