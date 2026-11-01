@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Gateway\CalorieTracker.Gateway.csproj" />
     <ProjectReference Include="..\Services\Identity\CalorieTracker.Identity.Api\CalorieTracker.Identity.Api.csproj" />
   </ItemGroup>
 

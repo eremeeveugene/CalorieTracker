@@ -25,6 +25,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapDefaultEndpoints();
+app.MapWellKnownEndpoints();
 app.MapAuthEndpoints();
 
 await app.RunAsync();

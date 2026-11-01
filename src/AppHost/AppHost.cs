@@ -7,8 +7,14 @@ var postgres = builder.AddPostgres("postgres")
 
 var identityDb = postgres.AddDatabase("identitydb");
 
-builder.AddProject<Projects.CalorieTracker_Identity_Api>("identity")
+var identity = builder.AddProject<Projects.CalorieTracker_Identity_Api>("identity")
     .WithReference(identityDb)
     .WaitFor(identityDb);
+
+// The only entry point clients can reach; services stay on the internal network
+builder.AddProject<Projects.CalorieTracker_Gateway>("gateway")
+    .WithReference(identity)
+    .WaitFor(identity)
+    .WithExternalHttpEndpoints();
 
 await builder.Build().RunAsync();
