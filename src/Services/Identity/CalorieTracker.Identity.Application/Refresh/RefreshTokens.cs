@@ -19,6 +19,12 @@ internal sealed class RefreshTokensCommandHandler(
 {
     public async Task<Result<AuthTokens>> HandleAsync(RefreshTokensCommand command, CancellationToken cancellationToken)
     {
+        // A field missing from the JSON body arrives as null despite the non-nullable type
+        if (string.IsNullOrEmpty(command.RefreshToken))
+        {
+            return Result.Failure<AuthTokens>(IdentityErrors.InvalidRefreshToken);
+        }
+
         var now = timeProvider.GetUtcNow();
         var refreshToken = await refreshTokens.FindByHashAsync(RefreshTokenSecret.Hash(command.RefreshToken), cancellationToken);
         if (refreshToken is null)

@@ -4,6 +4,9 @@ namespace CalorieTracker.Identity.Application;
 
 public static class IdentityErrors
 {
+    public static readonly Error MissingCredentials =
+        Error.Validation("Identity.MissingCredentials", "Enter your email and password.");
+
     public static readonly Error InvalidCredentials =
         Error.Unauthorized("Identity.InvalidCredentials", "The email or password is incorrect.");
 
