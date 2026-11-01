@@ -1,3 +1,4 @@
+﻿using System.Net;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Builder;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CalorieTracker.Gateway.IntegrationTests;
+namespace CalorieTracker.Testing;
 
 // Stands in for the Identity service on a real port: publishes a test signing key
 // and answers every other request with the path it received
@@ -36,7 +37,7 @@ public sealed class FakeIdentityServer : IAsyncDisposable
             new RsaSecurityKey(rsa.ExportParameters(includePrivateParameters: false)) { KeyId = signingKey.KeyId });
 
         var builder = WebApplication.CreateSlimBuilder();
-        builder.WebHost.UseUrls("http://127.0.0.1:0");
+        builder.WebHost.ConfigureKestrel(kestrel => kestrel.Listen(IPAddress.Loopback, 0));
         var app = builder.Build();
 
         app.MapGet("/.well-known/openid-configuration", (HttpRequest request) => Results.Json(new Dictionary<string, string>

@@ -1,15 +1,21 @@
 using CalorieTracker.BuildingBlocks.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace CalorieTracker.Identity.Api.Endpoints;
+namespace CalorieTracker.BuildingBlocks.Web;
 
-internal static class ErrorExtensions
+// One mapping for every service: the ProblemDetails title carries the error code clients match on
+public static class ErrorHttpExtensions
 {
-    public static ProblemHttpResult ToProblem(this Error error) =>
-        TypedResults.Problem(
+    public static ProblemHttpResult ToProblem(this Error error)
+    {
+        ArgumentNullException.ThrowIfNull(error);
+
+        return TypedResults.Problem(
             title: error.Code,
             detail: error.Description,
             statusCode: ToStatusCode(error.Type));
+    }
 
     private static int ToStatusCode(ErrorType type) => type switch
     {

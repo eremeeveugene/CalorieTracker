@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <UserSecretsId>calorie-tracker-catalog-api</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks.Web\CalorieTracker.BuildingBlocks.Web.csproj" />
+    <ProjectReference Include="..\..\..\Contracts\CalorieTracker.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\ServiceDefaults\CalorieTracker.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\CalorieTracker.Catalog.Infrastructure\CalorieTracker.Catalog.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

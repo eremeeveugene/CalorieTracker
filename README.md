@@ -41,6 +41,19 @@ dotnet run --project src/AppHost
 - **Packages:** all versions live in `Directory.Packages.props`.
 - **Code quality:** analyzer warnings fail the build.
 
+## Food data
+
+The catalog grows from two free databases and keeps every food it fetches, so repeat lookups never leave our servers:
+
+- [Open Food Facts](https://world.openfoodfacts.org) for packaged products by barcode (data under the [Open Database License](https://opendatacommons.org/licenses/odbl/1-0/))
+- [USDA FoodData Central](https://fdc.nal.usda.gov) for generic foods and US branded products (public domain)
+
+USDA's built-in `DEMO_KEY` allows only about 10 requests per hour. Get a free key at <https://fdc.nal.usda.gov/api-key-signup> and store it outside the repository:
+
+```bash
+dotnet user-secrets set "Usda:ApiKey" "<your key>" --project src/Services/Catalog/CalorieTracker.Catalog.Api
+```
+
 ## Security
 
 See [docs/SECURITY.md](docs/SECURITY.md) for how to report a vulnerability and for the security checklist.
