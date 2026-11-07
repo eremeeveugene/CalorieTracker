@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <!-- All Avalonia packages must share one version -->
-    <AvaloniaVersion>12.1.4</AvaloniaVersion>
+    <AvaloniaVersion>12.1.5</AvaloniaVersion>
     <OpenTelemetryVersion>1.17.0</OpenTelemetryVersion>
   </PropertyGroup>
 
